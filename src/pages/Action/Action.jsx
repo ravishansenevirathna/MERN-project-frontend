@@ -11,18 +11,19 @@ export default function Action(){
 
     console.log('run-------------')
     const [student_name, setName] = useState("");
-    const [student_address, setAddress] = useState("");
     const [student_age, setAge] = useState("");
-    const [student_contact, setContact] = useState("");
+    const [student_gender, setGender] = useState("");
+    
+   
 
 
     const save = () => {
 
-        instance.post('/student/save', {
-            student_name: student_name,
-            student_address: student_address,
-            student_age:student_age,
-            student_contact:student_contact
+        instance.post('/add', {
+            name: student_name,
+            age: student_age,
+            gender:student_gender,
+            
         })
             .then(function (response) {
                 console.log(response);
@@ -56,9 +57,11 @@ export default function Action(){
             autoComplete="off"
         >
             <TextField onChange={(val)=> setName(val.target.value)} id="Student Name" label="Name" variant="outlined"/>
-            <TextField onChange={(val)=> setAddress(val.target.value)} id="Student Address" label="Address" variant="outlined"/> <br/><br/>
-            <TextField onChange={(val)=> setAge(val.target.value)} id="Student Age" label="Age" variant="outlined"/>
-            <TextField onChange={(val)=> setContact(val.target.value)} id="Student Contact" label="Contact" variant="outlined"/> <br/><br/>
+           
+            <TextField onChange={(val)=> setAge(val.target.value)} id="Student Age" label="Age" variant="outlined"/> <br/><br/>
+
+            <TextField onChange={(val)=> setGender(val.target.value)} id="Student Gender" label="Gender" variant="outlined"/>
+    
 
             <Stack direction="row" spacing={120}>
 
